@@ -76,7 +76,7 @@ impl IfcExtractor {
         self.ifc
             .data
             .find_all_of_type::<RelVoidsElement>()
-            .filter(move |&(_, rel_voids)| (rel_voids.relating_building_element == id.id()))
+            .filter(move |&(_, rel_voids)| rel_voids.relating_building_element == id.id())
             .map(|(_, rel_voids)| self.ifc.data.get(rel_voids.related_opening_element))
     }
 

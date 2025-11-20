@@ -75,7 +75,7 @@ impl DataMap {
     pub fn id_of<T: IfcType>(&self) -> impl Iterator<Item = TypedId<T>> + '_ {
         self.0
             .iter()
-            .filter(|&(_, ifc_type)| (ifc_type.type_id() == TypeId::of::<T>()))
+            .filter(|&(_, ifc_type)| ifc_type.type_id() == TypeId::of::<T>())
             .map(|(id, _)| TypedId::new(*id))
     }
 }

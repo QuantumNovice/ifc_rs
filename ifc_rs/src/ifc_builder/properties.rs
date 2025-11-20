@@ -56,7 +56,7 @@ where
 impl IfcWallBuilder<'_, '_> {
     /// Add a [`PropertySet`] to the [`Wall`] which is currently build.
     #[must_use]
-    pub fn add_properties(&mut self, name: &str) -> IfcWallPropertiesBuilder<Wall, Self> {
+    pub fn add_properties(&mut self, name: &str) -> IfcWallPropertiesBuilder<'_, Wall, Self> {
         IfcWallPropertiesBuilder {
             object: self,
             name: name.to_string(),
@@ -79,7 +79,7 @@ pub struct IfcPropertySetBuilder<'a> {
 impl IfcStoreyBuilder<'_> {
     /// creates an [`IfcPropertySetBuilder`] to prepare an arbitrary [`PropertySet`]
     #[must_use]
-    pub fn add_properties(&mut self, name: &str) -> IfcPropertySetBuilder {
+    pub fn add_properties(&mut self, name: &str) -> IfcPropertySetBuilder<'_> {
         IfcPropertySetBuilder {
             ifc: &mut self.project.ifc,
             name: name.to_string(),
